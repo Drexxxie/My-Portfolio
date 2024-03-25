@@ -7,6 +7,18 @@
     <title>Portfolio | Adegbuyi Daniel</title>
 </head>
 <body>
+    <header class="sticky">
+        <a href="#" class="logo">Portfolio</a>
+        <div class="toggle"></div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Testimonial</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </header>
     <section class="banner">
         <div class="textBx">
             <h2>Hello, I'm<br><span>Adegbuyi Daniel.</span></h2>
@@ -14,5 +26,28 @@
             <a href="#" class="btn">About Me</a>
         </div>
     </section>
-</body>
+    <section class="about">
+        <div class="heading">
+            <h2>About Me</h2>
+        </div>
+        <div class="content">
+            <div class="contentBx w50">
+                <h3>I'm a Front End Developer.</h3>
+                <p>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Sequi quidem maxime impedit non atque alias, quia a amet iste magnam. Ut sunt aspernatur architecto. Explicabo voluptatibus ea odit molestiae eos!</p>
+                <br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo unde debitis at voluptas tempora sunt cupiditate veritatis, necessitatibus voluptate voluptatem vero atque ad magni incidunt sint rerum distinctio, fugiat repudiandae.</p>
+            </div>
+            <div class="w50">
+                <img src="./images/img1.jpg" alt="" class="img">
+            </div>
+        </div>
+    </section>
+    <section class="services"></section>
+    <script type="text/javascript">
+        window.addEventListener('scroll', function(){
+            var header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+    </script>
+</body> 
 </html>
