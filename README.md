@@ -9,6 +9,10 @@ settings for the Production, Preview, and Development environments as needed:
 - `SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY`
 
+Run `supabase/schema.sql` in the Supabase SQL Editor before testing the form.
+The `SUPABASE_SERVICE_ROLE_KEY` must be the project secret key, not an
+`sb_publishable_...` key.
+
 Copy `.env.example` to `.env.local` for local development. Never commit the
 service-role key or put it in frontend `VITE_` variables.
 
