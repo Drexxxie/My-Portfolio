@@ -1,5 +1,17 @@
 # React + TypeScript + Vite
 
+## Contact form setup
+
+The contact form submits to `POST /api/messages`, which stores messages in the
+Supabase `contact_messages` table. Add these variables to the Vercel project
+settings for the Production, Preview, and Development environments as needed:
+
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+
+Copy `.env.example` to `.env.local` for local development. Never commit the
+service-role key or put it in frontend `VITE_` variables.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
