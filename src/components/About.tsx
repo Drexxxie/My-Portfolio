@@ -2,6 +2,7 @@ import { Check, Code2, Gauge, MousePointerClick, Smartphone } from 'lucide-react
 import Reveal from './Reveal';
 import SectionHeading from './SectionHeading';
 import { scrollToSection } from '../lib/data';
+import myPhoto from '../../My Photo.jpg';
 
 const HIGHLIGHTS = [
   'Frontend Development',
@@ -51,35 +52,17 @@ export default function About() {
         <div className="mt-12 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <Reveal>
             <div className="relative">
-              <div
-                className="absolute -inset-4 bg-[radial-gradient(closest-side,rgba(255,196,46,0.10),transparent)] blur-xl"
-                aria-hidden="true"
-              />
               <div className="relative border border-electric/30 bg-ink p-2">
                 <span className="absolute -top-px -left-px h-6 w-6 border-t-2 border-l-2 border-gold" aria-hidden="true" />
                 <span className="absolute -top-px -right-px h-6 w-6 border-t-2 border-r-2 border-gold" aria-hidden="true" />
                 <span className="absolute -bottom-px -left-px h-6 w-6 border-b-2 border-l-2 border-gold" aria-hidden="true" />
                 <span className="absolute -right-px -bottom-px h-6 w-6 border-r-2 border-b-2 border-gold" aria-hidden="true" />
-                <div className="bg-grid relative flex aspect-[4/5] flex-col items-center justify-center overflow-hidden bg-panel sm:aspect-square lg:aspect-[4/5]">
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        'radial-gradient(320px 220px at 50% 30%, rgba(46,125,255,0.25), transparent 70%)',
-                    }}
-                    aria-hidden="true"
+                <div className="relative flex aspect-[4/5] flex-col items-center justify-center overflow-hidden bg-panel sm:aspect-square lg:aspect-[4/5]">
+                  <img
+                    src={myPhoto}
+                    alt="Daniel Adegbuyi"
+                    className="relative h-full w-full object-cover object-center brightness-100 contrast-100 filter-none"
                   />
-                  <span className="font-display text-7xl font-bold tracking-tight text-white sm:text-8xl" aria-hidden="true">
-                    DA<span className="text-gold">.</span>
-                  </span>
-                  <span className="font-mono mt-4 text-[11px] tracking-[0.3em] text-electric uppercase">
-                    {'</>'} Web Developer
-                  </span>
-                  <span className="font-mono mt-6 border border-dashed border-line px-4 py-2 text-center text-[11px] leading-relaxed text-mist/80">
-                    Professional photo
-                    <br />
-                    placeholder {'\u2014'} update anytime
-                  </span>
                   <span className="font-mono absolute bottom-4 left-4 text-[10px] text-white/25" aria-hidden="true">fig. 01</span>
                   <span className="font-mono absolute right-4 bottom-4 text-[10px] text-white/25" aria-hidden="true">{'{ dev }'}</span>
                 </div>
