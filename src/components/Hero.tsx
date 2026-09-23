@@ -52,13 +52,16 @@ function TypedCode() {
     };
   }, []);
 
-  let remaining = count;
-  let cursorShown = false;
   const done = count >= TOTAL_CHARS;
 
   return (
     <div className="font-mono text-[11px] leading-[1.7] sm:text-[12.5px]" aria-label="Animated code sample">
       {CODE_LINES.map((line, li) => {
+        const charsBeforeLine = CODE_LINES.slice(0, li).reduce(
+          (sum, previousLine) => sum + previousLine.tokens.reduce((s, tok) => s + tok.t.length, 0) + 1,
+          0
+        );
+        const remaining = count - charsBeforeLine;
         if (remaining <= 0) {
           return (
             <div key={li} className="flex">
@@ -68,23 +71,26 @@ function TypedCode() {
             </div>
           );
         }
-        const spans: Token[] = [];
-        for (const tok of line.tokens) {
-          if (remaining <= 0) break;
-          const slice = tok.t.slice(0, remaining);
-          spans.push({ t: slice, c: tok.c });
-          remaining -= slice.length;
-        }
-        remaining -= 1;
-        const showCursor = !done && !cursorShown && remaining <= 0;
-        if (showCursor) cursorShown = true;
+        const rendered = line.tokens.reduce<{ spans: Token[]; remaining: number }>(
+          (acc, tok) => {
+            if (acc.remaining <= 0) return acc;
+            const slice = tok.t.slice(0, acc.remaining);
+            return {
+              spans: [...acc.spans, { t: slice, c: tok.c }],
+              remaining: acc.remaining - slice.length,
+            };
+          },
+          { spans: [], remaining }
+        );
+        const remainingAfterLine = rendered.remaining - 1;
+        const showCursor = !done && remainingAfterLine <= 0;
         return (
           <div key={li} className="flex">
             <span className="w-7 shrink-0 text-right text-white/20 select-none">{li + 1}</span>
             <span className="w-4 shrink-0" />
             <span className="whitespace-pre">
-              {spans.length > 0 ? (
-                spans.map((s, si) => (
+              {rendered.spans.length > 0 ? (
+                rendered.spans.map((s, si) => (
                   <span key={si} className={s.c}>
                     {s.t}
                   </span>
